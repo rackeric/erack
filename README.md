@@ -3,9 +3,9 @@
 
 Another CLI to the Rackspace Public Cloud written in Go.
 
--[The Go Programming Language](https://golang.org/)
--[gophercloud](http://gophercloud.io/)
--[cli.go](https://github.com/codegangsta/cli)
+- [The Go Programming Language](https://golang.org/)
+- [gophercloud](http://gophercloud.io/)
+- [cli.go](https://github.com/codegangsta/cli)
 
 ## Authentication
 You can authenticate by setting your username, API key and region using the command line options.
