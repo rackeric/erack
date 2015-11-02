@@ -6,6 +6,8 @@ import (
   "github.com/rackeric/erack/servers/instance"
   "github.com/rackeric/erack/servers/flavor"
   "github.com/rackeric/erack/servers/image"
+  "github.com/rackeric/erack/networks"
+  "github.com/rackeric/erack/blockstorage/volumes"
 )
 
 /*
@@ -46,7 +48,7 @@ func main() {
     // for Cloud Servers
     {
       Name:      "servers",
-      Usage:     "options for servers",
+      Usage:     "options for Cloud Servers",
       Subcommands: []cli.Command{
         {
           Name:  "instance",
@@ -112,6 +114,40 @@ func main() {
                 serversimagelist.Get(c)
               },
             },
+          },
+        },
+      },
+    },
+    {
+      Name:      "blockstorage",
+      Usage:     "options for Cloud Block Storage",
+      Subcommands: []cli.Command{
+        {
+          Name:  "volumes",
+          Usage: "options for volumes",
+          Subcommands: []cli.Command{
+            {
+              Name: "list",
+              Usage: "Return a list of Cloud Block Storage volumes.",
+              Flags: blockstoragevolumes.GetListFlags(),
+              Action: func(c *cli.Context) {
+                blockstoragevolumes.GetList(c)
+              },
+            },
+          },
+        },
+      },
+    },
+    {
+      Name:      "networks",
+      Usage:     "options for Cloud Networks",
+      Subcommands: []cli.Command{
+        {
+          Name:  "list",
+          Usage: "networks list",
+          Flags: networks.GetListFlags(),
+          Action: func(c *cli.Context) {
+            networks.List(c)
           },
         },
       },
