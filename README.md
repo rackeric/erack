@@ -20,11 +20,11 @@ $ erack servers instance list --user <username> --key <api_key> --region <region
 ```
 
 ## Environment Variables
-You can also set your username, apikey and region by using the following environment variables instead of using command line options.
+You can also set your `USERNAME`, `APIKEY` and `REGION` by using environment variables instead of using command line options.
 ```
-$USERNAME
-$APIKEY
-$REGION
+$ export USERNAME=<username>
+$ export APIKEY=<api_key>
+$ export REGION=<region>
 ```
 
 ## Built in help
