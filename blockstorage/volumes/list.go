@@ -52,6 +52,7 @@ func GetList(c *cli.Context) {
 
     err3 := volumes.List(serviceClient).EachPage(func(page pagination.Page) (bool, error) {
       volumeList, err4 := volumes.ExtractVolumes(page)
+      // https://github.com/rackspace/gophercloud/blob/master/openstack/blockstorage/v1/volumes/results.go
       for _, v := range volumeList {
         fmt.Println("Name: ", v.Name)
         fmt.Println("ID: ", v.ID)
