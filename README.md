@@ -1,7 +1,11 @@
 # erack
 [![Build Status](http://104.130.11.192:8080/buildStatus/icon?job=test1)](http://104.130.11.192:8080/job/test1/)
 
-Another CLI to the Rackspace Public Cloud.
+Another CLI to the Rackspace Public Cloud written in Go.
+
+[The Go Programming Language](https://golang.org/)
+[gophercloud](http://gophercloud.io/)
+[cli.go](https://github.com/codegangsta/cli)
 
 ## Authentication
 You can authenticate by setting your username, API key and region using the command line options.
