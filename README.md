@@ -1,5 +1,6 @@
 # erack
 [![Build Status](http://104.130.11.192:8080/buildStatus/icon?job=test1)](http://104.130.11.192:8080/job/test1/)
+[![GoDoc](https://godoc.org/github.com/rackeric/erack?status.svg)](https://godoc.org/github.com/rackeric/erack)
 
 Another CLI to the Rackspace Public Cloud written in Go and using a couple of really cool libraries.
 
