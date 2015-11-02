@@ -1,7 +1,7 @@
 # erack
 [![Build Status](http://104.130.11.192:8080/buildStatus/icon?job=test1)](http://104.130.11.192:8080/job/test1/)
 
-Another CLI to the Rackspace Public Cloud written in Go.
+Another CLI to the Rackspace Public Cloud written in Go and using a couple of really cool libraries.
 
 - [The Go Programming Language](https://golang.org/)
 - [gophercloud](http://gophercloud.io/)
