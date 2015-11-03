@@ -134,6 +134,22 @@ func main() {
 								blockstoragevolumes.GetList(c)
 							},
 						},
+						{
+							Name:  "create",
+							Usage: "Create a Cloud Block Storage volume.",
+							Flags: blockstoragevolumes.GetCreateFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragevolumes.Create(c)
+							},
+						},
+						{
+							Name:  "types",
+							Usage: "Return a list of Cloud Block Storage volume types.",
+							Flags: blockstoragevolumes.GetTypesFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragevolumes.GetTypes(c)
+							},
+						},
 					},
 				},
 			},
