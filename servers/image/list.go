@@ -9,6 +9,7 @@ import (
   "github.com/rackspace/gophercloud/rackspace/compute/v2/images"
 )
 
+// get list of flags for cli.go subcommand
 func GetFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{
@@ -29,6 +30,7 @@ func GetFlags() []cli.Flag {
   }
 }
 
+// print list of cloud servers images to stdout
 func Get(c *cli.Context) {
   // assign vars from cli args
   user := c.String("user")

@@ -9,6 +9,7 @@ import (
   "github.com/rackspace/gophercloud/rackspace/compute/v2/servers"
 )
 
+// get list of flags for cli.go subcommand
 func GetListFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{

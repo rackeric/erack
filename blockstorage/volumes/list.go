@@ -9,6 +9,7 @@ import (
   "github.com/rackspace/gophercloud/rackspace/blockstorage/v1/volumes"
 )
 
+// get list of flags for cli.go subcommand
 func GetListFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{
@@ -29,6 +30,7 @@ func GetListFlags() []cli.Flag {
   }
 }
 
+// print list of cloud block storage volumes to stdout
 func GetList(c *cli.Context) {
     // assign vars from cli args
     user := c.String("user")

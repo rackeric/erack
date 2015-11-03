@@ -8,6 +8,7 @@ import (
   "github.com/rackspace/gophercloud/rackspace/compute/v2/servers"
 )
 
+// get list of flags for cli.go subcommand
 func GetDeleteFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{
@@ -32,6 +33,7 @@ func GetDeleteFlags() []cli.Flag {
   }
 }
 
+// delete cloud servers instance and print out results to stdout
 func Delete(c *cli.Context) {
     // assign vars from cli args
     user := c.String("user")

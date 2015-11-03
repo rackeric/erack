@@ -8,6 +8,7 @@ import (
   "github.com/rackspace/gophercloud/rackspace/compute/v2/servers"
 )
 
+// get list of flags for cli.go subcommand
 func GetCreateFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{
@@ -40,6 +41,7 @@ func GetCreateFlags() []cli.Flag {
   }
 }
 
+// create cloud servers instance and print out results to stdout (eg. password)
 func Create(c *cli.Context) {
     // assign vars from cli args
     user := c.String("user")
