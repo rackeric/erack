@@ -135,11 +135,27 @@ func main() {
 							},
 						},
 						{
+							Name:  "show",
+							Usage: "Show details on a Cloud Block Storage volume.",
+							Flags: blockstoragevolumes.GetShowFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragevolumes.Show(c)
+							},
+						},
+						{
 							Name:  "create",
 							Usage: "Create a Cloud Block Storage volume.",
 							Flags: blockstoragevolumes.GetCreateFlags(),
 							Action: func(c *cli.Context) {
 								blockstoragevolumes.Create(c)
+							},
+						},
+						{
+							Name:  "delete",
+							Usage: "Delete a Cloud Block Storage volume.",
+							Flags: blockstoragevolumes.GetDeleteFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragevolumes.Delete(c)
 							},
 						},
 						{
