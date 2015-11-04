@@ -1,3 +1,4 @@
+// This package works with the Rackspace Public Cloud Servers flavors
 package serversflavorlist
 
 import (

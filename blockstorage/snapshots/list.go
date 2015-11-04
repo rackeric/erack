@@ -1,4 +1,4 @@
-// works with Rackspace Public Cloud Block Storage snapshots
+// This package works with Rackspace Public Cloud Block Storage snapshots
 package blockstoragesnapshots
 
 import (

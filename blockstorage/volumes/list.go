@@ -1,3 +1,4 @@
+// This packages works with the Rackspace Public Cloud Block Storage volumes
 package blockstoragevolumes
 
 import (
