@@ -5,7 +5,6 @@ import (
   "github.com/codegangsta/cli"
   "github.com/rackspace/gophercloud"
   "github.com/rackspace/gophercloud/rackspace"
-  //"github.com/rackspace/gophercloud/pagination"
   "github.com/rackspace/gophercloud/rackspace/blockstorage/v1/volumes"
 )
 

@@ -137,7 +137,7 @@ func main() {
 						},
 						{
 							Name:  "show",
-							Usage: "Show details on a Cloud Block Storage volume.",
+							Usage: "Show details of a Cloud Block Storage volume.",
 							Flags: blockstoragevolumes.GetShowFlags(),
 							Action: func(c *cli.Context) {
 								blockstoragevolumes.Show(c)
@@ -179,6 +179,14 @@ func main() {
 							Flags: blockstoragesnapshots.GetListFlags(),
 							Action: func(c *cli.Context) {
 								blockstoragesnapshots.List(c)
+							},
+						},
+						{
+							Name:  "show",
+							Usage: "Return details of a Cloud Block Storage snapshot.",
+							Flags: blockstoragesnapshots.GetShowFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragesnapshots.Show(c)
 							},
 						},
 					},

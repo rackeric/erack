@@ -1,4 +1,3 @@
-// This package works with Rackspace Public Cloud Block Storage snapshots
 package blockstoragesnapshots
 
 import (
@@ -6,12 +5,11 @@ import (
   "github.com/codegangsta/cli"
   "github.com/rackspace/gophercloud"
   "github.com/rackspace/gophercloud/rackspace"
-  "github.com/rackspace/gophercloud/pagination"
   "github.com/rackspace/gophercloud/rackspace/blockstorage/v1/snapshots"
 )
 
 // get list of flags for cli.go subcommand
-func GetListFlags() []cli.Flag {
+func GetShowFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{
       Name: "user, u",
@@ -28,15 +26,21 @@ func GetListFlags() []cli.Flag {
       Usage: "set api region",
       EnvVar: "REGION",
     },
+    cli.StringFlag{
+      Name: "uuid",
+      Usage: "set uuid of snapshot to show details",
+    },
   }
 }
 
-// print list of cloud block storage snapshots to stdout
-func List(c *cli.Context) {
+// print details of a cloud block storage snapshots to stdout
+func Show(c *cli.Context) {
     // assign vars from cli args
     user := c.String("user")
     key := c.String("key")
     region := c.String("region")
+    snapshotId := c.Args().First()
+    if c.String("uuid") != "" { snapshotId = c.String("uuid") }
 
     // step 1, set up auth options
     ao := gophercloud.AuthOptions{
@@ -53,20 +57,15 @@ func List(c *cli.Context) {
     })
     if err2 != nil { fmt.Println(err2) }
 
-    err3 := snapshots.List(serviceClient).EachPage(func(page pagination.Page) (bool, error) {
-      snapshotList, err4 := snapshots.ExtractSnapshots(page)
-      for _, s := range snapshotList {
-        fmt.Println("Name: ", s.Name)
-        fmt.Println("ID: ", s.ID)
-        fmt.Println("Size: ", s.Size)
-        fmt.Println("Status: ", s.Status)
-        fmt.Println("Parent: ", s.VolumeID)
-        fmt.Println("Created: ", s.CreatedAt)
-        fmt.Println("Progress: ", s.Progress)
-        fmt.Println("\n")
-      }
-      if err4 != nil { fmt.Println(err4) }
-      return true, nil
-    })
+    s, err3 := snapshots.Get(serviceClient, snapshotId).Extract()
     if err3 != nil { fmt.Println(err3) }
+
+    fmt.Println("Name: ", s.Name)
+    fmt.Println("ID: ", s.ID)
+    fmt.Println("Size: ", s.Size)
+    fmt.Println("Status: ", s.Status)
+    fmt.Println("Progress: ", s.Progress)
+    fmt.Println("Parent: ", s.VolumeID)
+    fmt.Println("Created: ", s.CreatedAt)
+    fmt.Println("\n")
 }
