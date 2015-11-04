@@ -281,6 +281,14 @@ func main() {
 								objectstorageobjects.Upload(c)
 							},
 						},
+						{
+							Name:  "download",
+							Usage: "download a file from a Cloud Files container",
+							Flags: objectstorageobjects.GetDownloadFlags(),
+							Action: func(c *cli.Context) {
+								objectstorageobjects.Download(c)
+							},
+						},
 					},
 				},
 			},
