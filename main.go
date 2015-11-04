@@ -3,13 +3,14 @@
 package main
 
 import (
+	"os"
 	"github.com/codegangsta/cli"
-	"github.com/rackeric/erack/blockstorage/volumes"
-	"github.com/rackeric/erack/networks"
 	"github.com/rackeric/erack/servers/flavor"
 	"github.com/rackeric/erack/servers/image"
 	"github.com/rackeric/erack/servers/instance"
-	"os"
+	"github.com/rackeric/erack/blockstorage/volumes"
+	"github.com/rackeric/erack/blockstorage/snapshots"
+	"github.com/rackeric/erack/networks"
 )
 
 // main app function starts here
@@ -164,6 +165,20 @@ func main() {
 							Flags: blockstoragevolumes.GetTypesFlags(),
 							Action: func(c *cli.Context) {
 								blockstoragevolumes.GetTypes(c)
+							},
+						},
+					},
+				},
+				{
+					Name:  "snapshots",
+					Usage: "options for snapshots",
+					Subcommands: []cli.Command{
+						{
+							Name:  "list",
+							Usage: "Return a list of Cloud Block Storage snapshots.",
+							Flags: blockstoragesnapshots.GetListFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragesnapshots.List(c)
 							},
 						},
 					},
