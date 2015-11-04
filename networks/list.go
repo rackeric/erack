@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"github.com/codegangsta/cli"
 	"github.com/rackspace/gophercloud"
-	//"github.com/rackspace/gophercloud/rackspace"
+	"github.com/rackspace/gophercloud/rackspace"
 	"github.com/rackspace/gophercloud/pagination"
-	//"github.com/rackspace/gophercloud/rackspace/compute/v2/networks"
-	"github.com/rackspace/gophercloud/openstack"
-	"github.com/rackspace/gophercloud/openstack/networking/v2/networks"
+	"github.com/rackspace/gophercloud/rackspace/compute/v2/networks"
+	//"github.com/rackspace/gophercloud/openstack"
+	//"github.com/rackspace/gophercloud/openstack/networking/v2/networks"
 )
 
 func GetListFlags() []cli.Flag {
@@ -46,14 +46,15 @@ func List(c *cli.Context) {
 	}
 	// step 2, rax auth to get back provider instance
 	//provider, err := rackspace.AuthenticatedClient(ao)
-	provider, err := openstack.AuthenticatedClient(ao)
+	provider, err := rackspace.AuthenticatedClient(ao)
 	if err != nil {
 		fmt.Println(err)
 	}
 
 	// set rax region
-	serviceClient, err2 := openstack.NewNetworkV2(provider, gophercloud.EndpointOpts{
-		Name:   "neutron",
+	serviceClient, err2 := rackspace.NewNetworkV2(provider, gophercloud.EndpointOpts{
+		Name:   "cloudNetworks",
+		//Type: "network",
 		Region: region,
 	})
 	if err2 != nil {
@@ -61,7 +62,8 @@ func List(c *cli.Context) {
 	}
 
 	// Retrieve a pager (i.e. a paginated collection)
-	networks_pager := networks.List(serviceClient, nil)
+	networks_pager := networks.List(serviceClient)
+	fmt.Println("networks_pager: ", networks_pager)
 
 	// Define an anonymous function to be executed on each page's iteration
 	err6 := networks_pager.EachPage(func(page pagination.Page) (bool, error) {

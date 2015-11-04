@@ -1,4 +1,4 @@
-// This packages works with the Rackspace Public Cloud Block Storage volumes
+// This package works with the Rackspace Public Cloud Block Storage volumes
 package blockstoragevolumes
 
 import (
