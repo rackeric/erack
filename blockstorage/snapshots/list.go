@@ -62,7 +62,6 @@ func List(c *cli.Context) {
         fmt.Println("Status: ", s.Status)
         fmt.Println("Parent: ", s.VolumeID)
         fmt.Println("Created: ", s.CreatedAt)
-        fmt.Println("Progress: ", s.Progress)
         fmt.Println("\n")
       }
       if err4 != nil { fmt.Println(err4) }
