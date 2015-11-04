@@ -189,6 +189,22 @@ func main() {
 								blockstoragesnapshots.Show(c)
 							},
 						},
+						{
+							Name:  "create",
+							Usage: "Create a Cloud Block Storage snapshot from volume.",
+							Flags: blockstoragesnapshots.GetCreateFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragesnapshots.Create(c)
+							},
+						},
+						{
+							Name:  "delete",
+							Usage: "Delete a Cloud Block Storage snapshot.",
+							Flags: blockstoragesnapshots.GetDeleteFlags(),
+							Action: func(c *cli.Context) {
+								blockstoragesnapshots.Delete(c)
+							},
+						},
 					},
 				},
 			},
