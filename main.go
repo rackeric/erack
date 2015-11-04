@@ -289,6 +289,14 @@ func main() {
 								objectstorageobjects.Download(c)
 							},
 						},
+						{
+							Name:  "delete",
+							Usage: "delete a file from a Cloud Files container",
+							Flags: objectstorageobjects.GetDeleteFlags(),
+							Action: func(c *cli.Context) {
+								objectstorageobjects.Delete(c)
+							},
+						},
 					},
 				},
 			},
