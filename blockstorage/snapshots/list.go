@@ -1,3 +1,4 @@
+// works with Rackspace Public Cloud Block Storage snapshots
 package blockstoragesnapshots
 
 import (
@@ -30,7 +31,7 @@ func GetListFlags() []cli.Flag {
   }
 }
 
-// print list of cloud block storage volumes to stdout
+// print list of cloud block storage snapshots to stdout
 func List(c *cli.Context) {
     // assign vars from cli args
     user := c.String("user")
