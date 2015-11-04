@@ -10,6 +10,8 @@ import (
 	"github.com/rackeric/erack/servers/instance"
 	"github.com/rackeric/erack/blockstorage/volumes"
 	"github.com/rackeric/erack/blockstorage/snapshots"
+	"github.com/rackeric/erack/files/containers"
+	"github.com/rackeric/erack/files/objects"
 	"github.com/rackeric/erack/networks"
 )
 
@@ -209,6 +211,56 @@ func main() {
 				},
 			},
 		},
+		{
+			Name:  "files",
+			Usage: "options for Cloud Files",
+			Subcommands: []cli.Command{
+				{
+					Name:  "containers",
+					Usage: "containers commands",
+					Subcommands: []cli.Command{
+						{
+							Name:  "list",
+							Usage: "list Cloud Files containers",
+							Flags: objectstoragecontainers.GetListFlags(),
+							Action: func(c *cli.Context) {
+								objectstoragecontainers.GetList(c)
+							},
+						},
+						{
+							Name:  "show",
+							Usage: "show details on a Cloud Files containers",
+							Flags: objectstoragecontainers.GetShowFlags(),
+							Action: func(c *cli.Context) {
+								objectstoragecontainers.Show(c)
+							},
+						},
+					},
+				},
+				{
+					Name:  "objects",
+					Usage: "objects commands",
+					Subcommands: []cli.Command{
+						{
+							Name:  "list",
+							Usage: "list Cloud Files objects",
+							Flags: objectstorageobjects.GetListFlags(),
+							Action: func(c *cli.Context) {
+								objectstorageobjects.List(c)
+							},
+						},
+						{
+							Name:  "show",
+							Usage: "show details on a Cloud Files objects",
+							Flags: objectstorageobjects.GetShowFlags(),
+							Action: func(c *cli.Context) {
+								objectstorageobjects.Show(c)
+							},
+						},
+					},
+				},
+			},
+		}, // ends cloud files
 		{
 			Name:  "networks",
 			Usage: "options for Cloud Networks",
