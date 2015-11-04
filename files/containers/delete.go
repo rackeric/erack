@@ -9,7 +9,7 @@ import (
 )
 
 // get list of flags for cli.go subcommand
-func GetShowFlags() []cli.Flag {
+func GetDeleteFlags() []cli.Flag {
   return []cli.Flag{
     cli.StringFlag{
       Name: "user, u",
@@ -28,13 +28,13 @@ func GetShowFlags() []cli.Flag {
     },
     cli.StringFlag{
       Name: "name",
-      Usage: "name of container to show",
+      Usage: "name of container to delete",
     },
   }
 }
 
-// print details of cloud files containers to stdout
-func Show(c *cli.Context) {
+// delete a cloud files container
+func Delete(c *cli.Context) {
     // assign vars from cli args
     user := c.String("user")
     key := c.String("key")
@@ -57,8 +57,7 @@ func Show(c *cli.Context) {
     })
     if err != nil { fmt.Println(err) }
 
-    myC, err3 := containers.Get(serviceClient, containerName).Extract()
-    if err3 != nil { fmt.Println(err3) }
-
-    fmt.Println(myC)
+    err2 := containers.Delete(serviceClient, containerName)
+    //err2 := containers.Create(serviceClient, containerName, nil)
+    fmt.Println(err2)
 }

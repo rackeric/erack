@@ -235,6 +235,22 @@ func main() {
 								objectstoragecontainers.Show(c)
 							},
 						},
+						{
+							Name:  "create",
+							Usage: "create a Cloud Files container",
+							Flags: objectstoragecontainers.GetCreateFlags(),
+							Action: func(c *cli.Context) {
+								objectstoragecontainers.Create(c)
+							},
+						},
+						{
+							Name:  "delete",
+							Usage: "delete a Cloud Files container",
+							Flags: objectstoragecontainers.GetDeleteFlags(),
+							Action: func(c *cli.Context) {
+								objectstoragecontainers.Delete(c)
+							},
+						},
 					},
 				},
 				{
