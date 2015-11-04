@@ -1,5 +1,5 @@
 
-// This package works with the Rackspace Public Cloud Networks
+// This package works with Rackspace Public Cloud Networks
 package networks
 
 import (

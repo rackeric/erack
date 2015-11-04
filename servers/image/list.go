@@ -1,4 +1,4 @@
-// This package works with the Rackspace Public Cloud Servers images
+// This package works with Rackspace Public Cloud Servers images
 package serversimagelist
 
 import (

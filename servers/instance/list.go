@@ -1,4 +1,4 @@
-// This package works with the Rackspace Public Cloud Servers instances
+// This package works with Rackspace Public Cloud Servers instances
 package serversinstance
 
 import (
