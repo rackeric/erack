@@ -273,6 +273,14 @@ func main() {
 								objectstorageobjects.Show(c)
 							},
 						},
+						{
+							Name:  "upload",
+							Usage: "upload a file to a Cloud Files container",
+							Flags: objectstorageobjects.GetUploadFlags(),
+							Action: func(c *cli.Context) {
+								objectstorageobjects.Upload(c)
+							},
+						},
 					},
 				},
 			},
