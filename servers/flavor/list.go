@@ -45,24 +45,18 @@ func Get(c *cli.Context) {
 	}
 	// step 2, rax auth to get back provider instance
 	provider, err := rackspace.AuthenticatedClient(ao)
-	if err != nil {
-		fmt.Println(err)
-	}
+	if err != nil {	fmt.Println(err) }
 
 	// set rax region
-	serviceClient, err2 := rackspace.NewComputeV2(provider, gophercloud.EndpointOpts{
+	serviceClient, err := rackspace.NewComputeV2(provider, gophercloud.EndpointOpts{
 		Region: region,
 	})
-	if err2 != nil {
-		fmt.Println(err2)
-	}
+	if err != nil {	fmt.Println(err) }
 
-	opts2 := flavors.ListOpts{}
-	err3 := flavors.ListDetail(serviceClient, opts2).EachPage(func(page pagination.Page) (bool, error) {
-		flavors, err4 := flavors.ExtractFlavors(page)
-		if err4 != nil {
-			fmt.Println(err4)
-		}
+	opts := flavors.ListOpts{}
+	cmdErr := flavors.ListDetail(serviceClient, opts).EachPage(func(page pagination.Page) (bool, error) {
+		flavors, err := flavors.ExtractFlavors(page)
+		if err != nil {	fmt.Println(err) }
 		// Use the page of []flavors.Flavor
 		// https://github.com/rackspace/gophercloud/blob/master/openstack/compute/v2/flavors/results.go
 		for _, f := range flavors {
@@ -75,7 +69,5 @@ func Get(c *cli.Context) {
 		}
 		return true, nil
 	})
-	if err3 != nil {
-		fmt.Println(err3)
-	}
+	if cmdErr != nil { fmt.Println(cmdErr) }
 }

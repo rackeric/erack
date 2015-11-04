@@ -48,15 +48,15 @@ func Get(c *cli.Context) {
   if err != nil { fmt.Println(err) }
 
   // set rax region
-  serviceClient, err2 := rackspace.NewComputeV2(provider, gophercloud.EndpointOpts{
+  serviceClient, err := rackspace.NewComputeV2(provider, gophercloud.EndpointOpts{
     Region: region,
   })
-  if err2 != nil { fmt.Println(err2) }
+  if err != nil { fmt.Println(err) }
 
   //opts3 := images.ListOpts{}
-  err4 := images.ListDetail(serviceClient, nil).EachPage(func (page pagination.Page) (bool, error) {
-    images, err5 := images.ExtractImages(page)
-    if err5 != nil { fmt.Println(err5) }
+  cmdErr := images.ListDetail(serviceClient, nil).EachPage(func (page pagination.Page) (bool, error) {
+    images, err := images.ExtractImages(page)
+    if err != nil { fmt.Println(err) }
     // Use the page of []images.Image
     // https://github.com/rackspace/gophercloud/blob/master/openstack/compute/v2/images/results.go
     for _, i := range images {
@@ -72,5 +72,5 @@ func Get(c *cli.Context) {
     }
     return true, nil
   })
-  if err4 != nil { fmt.Println(err4) }
+  if cmdErr != nil { fmt.Println(cmdErr) }
 }
