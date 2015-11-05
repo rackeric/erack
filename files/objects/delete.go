@@ -62,6 +62,6 @@ func Delete(c *cli.Context) {
     if err != nil { fmt.Println(err) }
 
     _, err2 := objects.Delete(serviceClient, containerName, objectName, nil).Extract()
-    if err != nil { fmt.Println(err2) }
+    if err2 != nil { fmt.Println(err2) }
     fmt.Printf("%v Deleted.", objectName)
 }

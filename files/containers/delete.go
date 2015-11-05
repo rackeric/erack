@@ -60,4 +60,5 @@ func Delete(c *cli.Context) {
     err2 := containers.Delete(serviceClient, containerName)
     //err2 := containers.Create(serviceClient, containerName, nil)
     fmt.Println(err2)
+    fmt.Printf("%v Deleted.", containerName)
 }
