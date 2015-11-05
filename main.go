@@ -216,7 +216,7 @@ func main() {
 			Usage: "options for Cloud Files",
 			Subcommands: []cli.Command{
 				{
-					Name:  "containers",
+					Name:  "container",
 					Usage: "containers commands",
 					Subcommands: []cli.Command{
 						{
@@ -254,7 +254,7 @@ func main() {
 					},
 				},
 				{
-					Name:  "objects",
+					Name:  "object",
 					Usage: "objects commands",
 					Subcommands: []cli.Command{
 						{
