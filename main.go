@@ -297,6 +297,14 @@ func main() {
 								objectstorageobjects.Delete(c)
 							},
 						},
+						{
+							Name:  "deleteall",
+							Usage: "delete ALL FILES from a Cloud Files container!",
+							Flags: objectstorageobjects.GetDeleteAllFlags(),
+							Action: func(c *cli.Context) {
+								objectstorageobjects.DeleteAll(c)
+							},
+						},
 					},
 				},
 			},
